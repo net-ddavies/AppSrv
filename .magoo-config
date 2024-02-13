@@ -1,0 +1,165 @@
+# -*- mode: toml -*-
+
+[deployments]
+ids = [ "janice", "mark", "sybil", "masha", "devel", "test" ]
+default = "mark"
+
+#===
+
+
+[sybil]
+type = "deployment"
+tts_ids = [ "safe_gcptts", "sybil_t2w", "sybil_spdsrv" ]
+default_tts = "safe_gcptts"
+mixer = "sybil_mixer"
+
+[sybil_mixer]
+type = "mixer"
+url = "tcp://192.168.1.156:7201"
+
+[sybil_t2w]
+type = "tts"
+adaptor_id = ":mstts"
+module = "MsTtsCli"
+url = "tcp://192.168.1.94:6602"
+output_type = "wav"
+
+[sybil_spdsrv]
+type = "tts"
+adaptor_id = ":mstts"
+module = "MsTtsCli"
+url = "tcp://192.168.1.156:6602"
+output_type = "wav"
+
+[safe_gcptts]
+type = "tts"
+adaptor_id = ":gcptts"
+module = "GcpTtsCli"
+url = "https://example.com:8888"
+output_type = "wav"
+
+#===
+
+[masha]
+type = "deployment"
+tts_ids = [ "gcptts" ]
+default_tts = "gcptts"
+mixer = "masha_mixer"
+
+[masha_mixer]
+type = "mixer"
+url = "tcp://192.168.1.177:7201"
+
+[gcptts]
+type = "tts"
+adaptor_id = ":gcptts"
+module = "GcpTtsCli"
+url = "https://example.com:8888"
+google_application_credentials = "C:\\Users\\Raquel\\gcp-key.json"
+
+# ===
+
+[janice]
+type = "deployment"
+tts_ids = [ "gcptts", "janice_t2w" ]
+default_tts = "janice_t2w"
+mixer = "janice_mixer"
+
+[janice_mixer]
+type = "mixer"
+url = "tcp://192.168.1.94:7201"
+
+[janice_t2w]
+type = "tts"
+adaptor_id = ":mstts"
+module = "MsTtsCli"
+url = "tcp://192.168.1.94:6602"
+
+# ===
+
+[mark]
+type = "deployment"
+tts_ids = [ "gcptts", "mark_t2w", "doris_t2w" ]
+default_tts = "mark_t2w"
+mixer = "mark_mixer"
+clip_service="mark_clip_service"
+app_service="mark_app_service"
+
+[mark_mixer]
+type = "mixer"
+url = "tcp://192.168.1.71:7201"
+
+[mark_clip_service]
+type = "clip_service"
+url = "tcp://192.168.1.71:7203"
+
+[mark_app_service]
+type = "app_service"
+url = "tcp://192.168.1.71:7205"
+map = "mark_app_service_map"
+
+[mark_app_service_map]
+chrome = "scripts\\AppSrvGChr.bat"
+firefox = "scripts\\AppSrvFF.bat"
+zoom = "scripts\\AppSrvZoom.bat"
+test = "scripts\\xxAppSrvTest.bat"
+
+[mark_t2w]
+type = "tts"
+adaptor_id = ":mstts"
+module = "MsTtsCli"
+url = "tcp://192.168.1.71:6602"
+
+# ===
+
+[doris_t2w]
+type = "tts"
+adaptor_id = ":mstts"
+module = "MsTtsCli"
+url = "tcp://192.168.1.89:6602"
+
+# ===
+
+[test]
+type = "deployment"
+tts_ids = [ "mark_t2w", "gcptts" ]
+default_tts = "mark_t2w"
+mixer = "test_mixer"
+
+[test_mixer]
+type = "mixer"
+url = "tcp://192.168.1.71:7231"
+
+[test_t2w]
+type = "tts"
+adaptor_id = ":mstts"
+module = "MsTtsCli"
+url = "tcp://192.168.1.71:6621"
+
+# ===
+
+[devel]
+type = "deployment"
+tts_ids = [ "devel_t2w", "gcptts" ]
+default_tts = "devel_t2w"
+mixer = "devel_mixer"
+
+[devel_mixer]
+type = "mixer"
+url = "tcp://192.168.1.94:7210"
+
+[devel_t2w]
+type = "tts"
+adaptor_id = ":mstts"
+
+url = "tcp://192.168.1.94:6602"
+
+[devel_nett2w]
+type = "tts"
+module = "MsTtsCli"
+adaptor_id = ":nett2w"
+url = "tcp://192.168.1.94:6622"
+output_type = "wav"
+
+
+# End of .magoo-config

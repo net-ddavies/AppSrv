@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# NB:  There is no '@' sign prefix, so we should get the "Untyped request" error message in the log.
+echo 'firefox www.slashdot.org' | nc mark 7205
+
+# End
+

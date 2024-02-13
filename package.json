@@ -1,0 +1,18 @@
+{
+  "name": "appsrv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "AppSrv.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@masha:repos/AppSrv.git"
+  },
+  "author": "ddavies@ddavies.net",
+  "license": "ISC",
+  "dependencies": {
+    "toml": "^3.0.0"
+  }
+}

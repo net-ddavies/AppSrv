@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo '@chrome www.slashdot.org' | nc mark 7205
+
+# End
+

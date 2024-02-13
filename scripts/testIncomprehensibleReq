@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# NB: there is no 'firefoxy' (note trailing 'y') in the .AppSrv.conf app map.
+echo '@' | nc mark 7205
+
+# End
+

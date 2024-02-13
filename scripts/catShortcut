@@ -1,0 +1,9 @@
+#!/bin/bash
+
+##cat `cygpath "%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\AppSrvStart.lnk"` | strings
+
+UPF="`cygpath ${USERPROFILE}`"
+echo ${UPF}
+cat "${UPF}/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/AppSrvStart.lnk" | strings
+
+# Ends here

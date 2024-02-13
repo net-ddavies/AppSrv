@@ -1,0 +1,5 @@
+#!/bin/bash
+
+netstat -aon | grep -i listening | grep ${1}
+
+# End

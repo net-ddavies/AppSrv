@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo '@test www.slashdot.org' | nc mark 7205
+
+# Ends here.
+
